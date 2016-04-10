@@ -54,7 +54,7 @@ BENCHMARKS = \
 	doc/bench/db_bench_tree_db
 
 CFLAGS += -I. -I./include $(PLATFORM_CCFLAGS) $(OPT)
-CXXFLAGS += --std=c++11 -DDLLX= -I. -I./include $(PLATFORM_CXXFLAGS) $(OPT)
+CXXFLAGS += --std=c++11 -DDLLX= -I. -I./include $(PLATFORM_CXXFLAGS) $(OPT)  -fPIC
 
 LDFLAGS += $(PLATFORM_LDFLAGS)
 LIBS += $(PLATFORM_LIBS) -lz
