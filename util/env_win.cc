@@ -1,7 +1,7 @@
 // Copyright (c) 2011 The LevelDB Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
-
+#ifdef WIN32
 #include <deque>
 
 #include <windows.h>
@@ -13,7 +13,9 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <time.h>
+
 #include <io.h>
+
 #include "leveldb/env.h"
 #include "leveldb/slice.h"
 
@@ -608,3 +610,4 @@ namespace leveldb {
 	}
 
 }
+#endif
