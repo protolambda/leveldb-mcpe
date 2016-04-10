@@ -13,9 +13,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <time.h>
-
 #include <io.h>
-
 #include "leveldb/env.h"
 #include "leveldb/slice.h"
 
