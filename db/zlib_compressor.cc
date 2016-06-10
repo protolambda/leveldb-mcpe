@@ -7,6 +7,10 @@
 
 namespace leveldb {
 
+  unsigned long compressBound(unsigned long sourceLen) {
+    return(((int)ceil(sourceLen * 1.001)) + 12);
+   }
+
 	void ZlibCompressor::compressImpl(const char* input, size_t length, ::std::string& buffer) const
 	{
 		const size_t BUFSIZE = 128 * 1024;

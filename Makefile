@@ -21,10 +21,8 @@ $(shell CC="$(CC)" CXX="$(CXX)" TARGET_OS="$(TARGET_OS)" \
 include build_config.mk
 
 TESTS = \
-	db/autocompact_test \
 	db/c_test \
 	db/corruption_test \
-	db/db_test \
 	db/dbformat_test \
 	db/fault_injection_test \
 	db/filename_test \
@@ -35,10 +33,7 @@ TESTS = \
 	db/version_set_test \
 	db/write_batch_test \
 	helpers/memenv/memenv_test \
-	issues/issue178_test \
-	issues/issue200_test \
 	table/filter_block_test \
-	table/table_test \
 	util/arena_test \
 	util/bloom_test \
 	util/cache_test \
@@ -48,7 +43,6 @@ TESTS = \
 	util/hash_test
 
 UTILS = \
-	db/db_bench \
 	db/leveldbutil
 
 # Put the object files in a subdirectory, but the application at the top of the object dir.
@@ -60,7 +54,7 @@ BENCHMARKS = \
 	doc/bench/db_bench_tree_db
 
 CFLAGS += -I. -I./include $(PLATFORM_CCFLAGS) $(OPT)
-CXXFLAGS += --std=c++11 -DDLLX= -I. -I./include $(PLATFORM_CXXFLAGS) $(OPT)
+CXXFLAGS += --std=c++11 -DDLLX= -I. -I./include $(PLATFORM_CXXFLAGS) $(OPT)  -fPIC
 
 LDFLAGS += $(PLATFORM_LDFLAGS)
 LIBS += $(PLATFORM_LIBS) -lz
@@ -80,7 +74,7 @@ else
 STATIC_OUTDIR=out-static
 SHARED_OUTDIR=out-shared
 STATIC_PROGRAMS := $(addprefix $(STATIC_OUTDIR)/, $(PROGNAMES))
-SHARED_PROGRAMS := $(addprefix $(SHARED_OUTDIR)/, db_bench)
+#SHARED_PROGRAMS := $(addprefix $(SHARED_OUTDIR)/, db_bench)
 endif
 
 STATIC_LIBOBJECTS := $(addprefix $(STATIC_OUTDIR)/, $(SOURCES:.cc=.o))
